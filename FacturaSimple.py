@@ -13,16 +13,16 @@ co4 = ['Ciudad y País', ' ', '', '', '']
 co5 = ['CIF/NIF ', ' ', '', 'Fecha Emisión', 'DD/MM/AAAA']
 co6 = ['Teléfono ', ' ', '', 'Número de Factura', 'A0001']
 co7 = ['Mail ', ' ', '', '', '']
-co8 = [' ', 'Descripción', 'Importe ', 'Cantidad', 'Total']
-co10 = [' ', 'Producto 1 ', '3,2', '5', '16,00']
-co11 = [' ', 'Producto 2 ', '2,1', '3', '6,30']
-co12 = [' ', 'Producto 3 ', '2,9', '76', '220,40']
-co13 = [' ', 'Producto 4 ', '5', '23', '115,00']
-co15 = [' ', 'Producto 5 ', '4,95', '3', '14,85']
-co16 = [' ', 'Producto 6 ', '6', '2', '12,00']
+co8 = ['Descripción ', '', 'Importe ', 'Cantidad', 'Total']
+co10 = ['Producto 1 ', ' ', '3,2', '5', '16,00']
+co11 = ['Producto 2 ', ' ', '2,1', '3', '6,30']
+co12 = ['Producto 3', ' ', '2,9', '76', '220,40']
+co13 = [' Producto 4', ' ', '5', '23', '115,00']
+co15 = ['Producto 5 ', ' ', '4,95', '3', '14,85']
+co16 = [' Producto 6', ' ', '6', '2', '12,00']
 
 taboa = Table([co1, co2, co3, co4, co5, co6, co7, co8, co10, co11, co12, co13, co15, co16],
-              colWidths=[0, 150, 80, 80, 80])
+              colWidths=[10, 150, 80, 80, 80])
 
 taboa.setStyle([('TEXTCOLOR', (0, 0), (7, 7), colors.green),
                 ('BOX', (0, 0), (-1, -1), 0, colors.black),
@@ -30,6 +30,7 @@ taboa.setStyle([('TEXTCOLOR', (0, 0), (7, 7), colors.green),
                 ('BACKGROUND', (0, 7), (7, 7), colors.darkgreen),
                 ('ALIGN', (0, 7), (7, 13), 'CENTER'),
                 ('ALIGN', (4, 5), (4, 5), 'CENTER'),
+                ('SPAN', (0, 7), (1, 7)),
                 ])
 
 gion.append(taboa)
