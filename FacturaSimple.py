@@ -13,7 +13,7 @@ co4 = ['Ciudad y País', ' ', '', '', '']
 co5 = ['CIF/NIF ', ' ', '', 'Fecha Emisión', 'DD/MM/AAAA']
 co6 = ['Teléfono ', ' ', '', 'Número de Factura', 'A0001']
 co7 = ['Mail ', ' ', '', '', '']
-co8 = ['', 'Descripción', 'Importe ', 'Cantidad', 'Total']
+co8 = [' ', 'Descripción', 'Importe ', 'Cantidad', 'Total']
 co10 = [' ', 'Producto 1 ', '3,2', '5', '16,00']
 co11 = [' ', 'Producto 2 ', '2,1', '3', '6,30']
 co12 = [' ', 'Producto 3 ', '2,9', '76', '220,40']
@@ -29,7 +29,7 @@ taboa.setStyle([('TEXTCOLOR', (0, 0), (7, 7), colors.green),
                 ('INNERGRID', (0, 0), (-1, -1), 0, colors.lightgrey),
                 ('BACKGROUND', (0, 7), (7, 7), colors.darkgreen),
                 ('ALIGN', (0, 7), (7, 13), 'CENTER'),
-                ('ALIGN', (5, 3), (5, 3), 'CENTER'),
+                ('ALIGN', (4, 5), (4, 5), 'CENTER'),
                 ])
 
 gion.append(taboa)
