@@ -1,9 +1,14 @@
 from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.graphics.charts.textlabels import Label
 from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.lib.pagesizes import A4
 
 d =Drawing(400, 200)
+titulo = Label()
+titulo.setOrigin(200, 190)
+titulo.setText("Porcentazxe contratados aprobados")
+
 
 datos = [(13.3, 8, 14.3, 20, 22.1, 38.4, 12.5, 19.3, 27.2, 23.9, 17.6, 25.4), (13.3, 8, 14.3, 20, 22.1, 38.4, 12.5, 19.3, 27.2, 23.9, 17.6, 25.4)]
 lendaDatos = ['11/23', '12/23', '01/24', '02/24', '03/24', '04/24', '05/11', '06/24', '07/25', '08/24', '09/21', '10/219', '11/18']
