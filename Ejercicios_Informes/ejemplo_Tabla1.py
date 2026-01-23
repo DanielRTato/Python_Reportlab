@@ -1,19 +1,15 @@
-# Importamos las clases necesarias de Platypus para crear el documento PDF.
-# Table y TableStyle son las clave para crear tablas formateadas.
 from reportlab.platypus import (Paragraph, Image, SimpleDocTemplate, Spacer,Table,TableStyle)
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.pdfgen.canvas import Color
 
-# Obtenemos la hoja de estilos de muestra.
-hojaEstilo = getSampleStyleSheet()
+hojaEstilo = getSampleStyleSheet() # Obtenemos la hoja de estilos de muestra.
 
-# Lista para los elementos del documento.
-elementosDoc = []
+elementosDoc = [] # Lista para los elementos del documento.
 
-# Cargamos una imagen pequeña (20x20).
-imagen = Image("check.png", 20, 20)
+imagen = Image("check.png", 20, 20) # Cargamos una imagen pequeña (20x20).
+
 
 # Obtenemos el estilo de cuerpo de texto.
 estiloCuerpoTexto = hojaEstilo["BodyText"]
@@ -38,14 +34,14 @@ estilo = [
     ("TEXTCOLOR", (0, 0), (0, -1), colors.blue),
     # Texto violeta para la primera fila (cabecera), excluyendo la primera celda (ya coloreada antes o solapada).
     # El orden de los comandos importa si se solapan.
-    ("TEXTCOLOR", (1, 0), (-1, 0), colors.blueviolet),
+    ("TEXTCOLOR", (1, 0), (3, 0), colors.blueviolet),
     # Texto gris para el cuerpo de datos.
     ("TEXTCOLOR", (1, 1), (-1, -1), colors.grey),
     # Caja (borde externo) alrededor del cuerpo de datos.
     ("BOX", (1, 1), (-1, -1), 1.25, colors.grey),
     # Rejilla interna para el cuerpo de datos.
     ("INNERGRID", (1, 1), (-1, -1), 1.25, colors.lightgrey),
-    # Alineación vertical centrada. (Corrigiendo "VALING" a "VALIGN").
+    # Alineación vertical centrada.
     ("VALIGN", (0, 0), (-1, -1), "MIDDLE")
 ]
 
@@ -57,5 +53,5 @@ tabla.setStyle(estilo)
 elementosDoc.append(tabla)
 
 # Generamos el PDF.
-documento = SimpleDocTemplate("ejemploTabla1.pdf", pagesize=A4)
+documento = SimpleDocTemplate("ejemplo_Tabla1.pdf", pagesize=A4)
 documento.build(elementosDoc)

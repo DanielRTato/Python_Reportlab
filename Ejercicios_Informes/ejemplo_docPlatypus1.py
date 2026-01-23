@@ -1,48 +1,31 @@
 import os
-
-# Importamos clases necesarias de reportlab.platypus.
-# Paragraph: Para bloques de texto con estilos (permite saltos de línea automáticos).
-# Image: Para insertar imágenes (aunque no se usa explícitamente en el código activo, está importada).
-# SimpleDocTemplate: Plantilla predefinida para documentos sencillos, maneja márgenes y flujo de página.
-# Spacer: Para añadir espacio vertical vacío entre elementos.
 from reportlab.platypus import Paragraph, Image, SimpleDocTemplate, Spacer
-
-# Importamos getSampleStyleSheet para obtener una hoja de estilos predefinida.
-from reportlab.lib.styles import getSampleStyleSheet
-
-# Importamos tamaños de página estándar (A4).
-from reportlab.lib.pagesizes import A4
-
-# Importamos definiciones de colores.
-from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet # Importamos getSampleStyleSheet para obtener una hoja de estilos predefinida.
+from reportlab.lib.pagesizes import A4 # Importamos tamaños de página estándar (A4).
+from reportlab.lib import colors # Importamos definiciones de colores.
+from reportlab.rl_settings import showBoundary
 
 # Obtenemos la hoja de estilos de muestra.
 # Esto nos devuelve un objeto tipo diccionario con estilos como 'Normal', 'Heading1', 'BodyText', etc.
 hojaEstilo = getSampleStyleSheet()
 
-# Lista vacía que parece no usarse en este script, quizás sobrante de otro ejemplo.
-guion = []
-
 # Lista donde almacenaremos los elementos "flowables" (flotantes) del documento.
 # Platypus coloca estos elementos uno tras otro en el documento, creando nuevas páginas según sea necesario.
 elementosDoc = []
 
-# Obtenemos el estilo "Heading4" (Encabezado nivel 4) de la hoja de estilos.
-cabecera = hojaEstilo["Heading4"]
+cabecera = hojaEstilo["Heading3"] # Obtenemos el estilo "Heading4" (Encabezado nivel 3) de la hoja de estilos.
 
 # Modificamos algunas propiedades del estilo "Heading4".
 # pageBreakBefore = 0: No fuerza un salto de página antes de este elemento.
 cabecera.pageBreakBefore = 0
 # keepWithNext = 0: No obliga a que este elemento se mantenga en la misma página que el siguiente.
 cabecera.keepWithNext = 0
-# backColor = colors.dimgrey: Establece un color de fondo gris oscuro para el texto con este estilo.
-cabecera.backColor = colors.dimgrey
+# backColor = colors.dimgrey: Establece un color de fondo lightcyan para el texto con este estilo.
+cabecera.backColor = colors.lightcyan
 
-# Creamos un objeto Paragraph con el texto "Cabecera del documento" y el estilo modificado.
-paragrafo = Paragraph("Cabecera del documento", cabecera)
+paragrafo = Paragraph("Cabecera del documento", cabecera) # Creamos un objeto Paragraph con el texto "Cabecera del documento" y el estilo modificado.
 
-# Añadimos el párrafo a nuestra lista de elementos del documento.
-elementosDoc.append(paragrafo)
+elementosDoc.append(paragrafo) # Añadimos el párrafo a nuestra lista de elementos del documento.
 
 # Añadimos un Spacer (espaciador) de 0 puntos de ancho y 5 puntos de alto.
 # Esto crea una separación vertical.
@@ -50,7 +33,7 @@ elementosDoc.append(Spacer(0,5))
 
 # Creamos una cadena de texto larga repitiendo una frase 100 veces.
 # Esto servirá para demostrar cómo Platypus maneja el texto que excede una línea o página.
-contenidoDocumento = "Este es el contenido del documento, el cual va a ocupar múltiples lineas. "*100
+contenidoDocumento = "Este es el contenido del documento, el cual va a ocupar múltiples lineas. " *100
 
 # Obtenemos el estilo "BodyText" (texto del cuerpo) de la hoja de estilos.
 estiloCuerpoTexto = hojaEstilo["BodyText"]
@@ -69,7 +52,7 @@ elementosDoc.append(Spacer(0,20))
 # Argumentos:
 # 1. Nombre del archivo PDF de salida.
 # 2. pagesize=A4: Tamaño de la página.
-documento = SimpleDocTemplate("ejemploDocPlatypus.pdf", pagesize = A4)
+documento = SimpleDocTemplate("ejemplo_docPlatypus.pdf", pagesize = A4, showBoundary=1)
 
 # Llamamos al método build() pasando la lista de elementos (flowables).
 # Este método procesa la lista y genera el PDF, calculando posiciones y saltos de página automáticamente.

@@ -1,17 +1,12 @@
-# Importamos el módulo canvas.
 from reportlab.pdfgen import canvas
 
-# Definimos una frase de muestra.
-frase = "Esta es una bonita frase para ver los distintos tipos de letra."
+frase = "Esta es una bonita frase para ver los distintos tipos de letra." # Definimos una frase de muestra.
 
-# Creamos el objeto Canvas.
-aux = canvas.Canvas("tiposLetra.pdf")
+hoja = canvas.Canvas("tiposLetra.pdf") # Creamos el objeto Canvas.
 
-# Creamos un objeto de texto (Text Object).
-obxTexto = aux.beginText()
+obxTexto = hoja.beginText() # Creamos un objeto de texto (Text Object).
 
-# Posición inicial del texto (X=20, Y=700).
-obxTexto.setTextOrigin(20, 700)
+obxTexto.setTextOrigin(20, 700) # Posición inicial del texto (X=20, Y=700).
 
 # Establecemos el color de relleno del texto a verde.
 # Se puede usar el nombre del color en string o RGB.
@@ -23,7 +18,7 @@ espacioCaracteres = 0
 
 # Iteramos sobre todas las fuentes disponibles en el sistema de ReportLab.
 # aux.getAvailableFonts() devuelve una lista de nombres de fuentes estándar (Courier, Helvetica, Times-Roman, etc.)
-for tipoLetra in aux.getAvailableFonts():
+for tipoLetra in hoja.getAvailableFonts():
     # Establecemos el espaciado entre caracteres. 
     # En cada iteración aumentamos este valor, haciendo que las letras se separen más.
     obxTexto.setCharSpace(espacioCaracteres)
@@ -64,7 +59,7 @@ for i in range(10):
     obxTexto.textLine(frase)
 
 # Dibujamos el objeto de texto en el canvas.
-aux.drawText(obxTexto)
+hoja.drawText(obxTexto)
 
 # Guardamos el PDF.
-aux.save()
+hoja.save()
