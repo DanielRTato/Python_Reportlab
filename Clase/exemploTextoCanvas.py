@@ -3,7 +3,7 @@ from reportlab.lib import colors
 
 texto = ("Este texto e para emeplo", "da utilizacion de canvas", "para usar con texto")
 
-obxCanvas = canvas.Canvas("textoCanvas.pdf")
+obxCanvas = canvas.Canvas("exemploTextoCanvas.pdf")
 
 obxTexto = obxCanvas.beginText()
 obxTexto.setTextOrigin(100, 500)

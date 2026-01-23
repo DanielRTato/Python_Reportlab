@@ -217,5 +217,5 @@ d3.add(leyenda)
 
 #---------------------------------------
 
-doc = SimpleDocTemplate("ExemploGrafico.pdf",pagesize=A4)
+doc = SimpleDocTemplate("ExemploGrafico.pdf", pagesize=A4)
 doc.build([d, Spacer(20,20), d2, Spacer(20,20), d3])
