@@ -1,21 +1,12 @@
-# Importamos elementos necesarios de Platypus.
-# Paragraph: Para texto con formato.
-# Image: Para insertar imágenes.
-# SimpleDocTemplate: Para la estructura del documento.
-# Spacer: Para espacios (no usado aquí).
-# Table: Para crear tablas.
-# TableStyle: Para definir el estilo de la tabla.
 from reportlab.platypus import (Paragraph, Image, SimpleDocTemplate, Spacer,Table,TableStyle)
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.pdfgen.canvas import Color
 
-# Obtenemos estilos predefinidos.
-hojaEstilo = getSampleStyleSheet()
+hojaEstilo = getSampleStyleSheet() # Obtenemos estilos predefinidos.
 
-# Lista de elementos del documento.
-elementosDoc = []
+elementosDoc = [] # Lista de elementos del documento.
 
 # Cargamos una imagen "check.png" con tamaño 50x50.
 # Esta imagen se usará dentro de una celda de la tabla.
@@ -23,7 +14,7 @@ imagen = Image("check.png", 50, 50)
 
 # Obtenemos estilos de texto y modificamos uno.
 estiloCuerpoTexto = hojaEstilo["BodyText"]
-estiloCuerpoTexto2 = hojaEstilo["Heading4"]
+estiloCuerpoTexto2 = hojaEstilo["Heading1"]
 
 # Modificamos el color del texto de BodyText a un rojo oscuro personalizado.
 # Color(R, G, B, alpha) -> En ReportLab los colores suelen definirse con floats de 0.0 a 1.0.
@@ -33,7 +24,7 @@ estiloCuerpoTexto.textColor = Color(150, 0, 0, 1)
 
 # Creamos párrafos para insertar en la tabla.
 parrafo = Paragraph("Optare", estiloCuerpoTexto)
-parrafo2 = Paragraph("Optare", estiloCuerpoTexto2)
+parrafo2 = Paragraph("PSA", estiloCuerpoTexto2)
 
 # Definimos los datos de la tabla.
 # Observa que las celdas pueden contener cadenas simples O listas de objetos Flowable (Párrafos, Imágenes).
@@ -75,5 +66,5 @@ tabla.setStyle(estilo)
 elementosDoc.append(tabla)
 
 # Generamos el PDF.
-documento = SimpleDocTemplate("ejemploTabla3.pdf", pagesize=A4)
+documento = SimpleDocTemplate("ejemplo_tabla3.pdf", pagesize=A4)
 documento.build(elementosDoc)

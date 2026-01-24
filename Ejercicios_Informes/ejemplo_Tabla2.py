@@ -21,7 +21,7 @@ temperaturas = [
 # Estilo base de la tabla.
 estilo = [
     # Color de texto gris para la primera fila (encabezados de mes).
-    ('TEXTCOLOR', (0, 0), (-1, 0), colors.grey),
+    ('TEXTCOLOR', (0, 0), (-1, 12), colors.grey),
     # Color de texto gris para la primera columna (etiquetas "Máximas", "Mínimas").
     ('TEXTCOLOR', (0, 1), (0, -1), colors.grey),
     # Caja (borde) alrededor de las celdas de datos (desde fila 1, col 1 hasta el final).
@@ -68,5 +68,5 @@ tabla.setStyle(estilo)
 elementosDoc.append(tabla)
 
 # Generamos el PDF.
-documento = SimpleDocTemplate("ejemploTabla2.pdf", pagesize=A4)
+documento = SimpleDocTemplate("ejemplo_Tabla2.pdf", pagesize=A4)
 documento.build(elementosDoc)

@@ -1,4 +1,3 @@
-# Importamos las clases necesarias.
 from reportlab.platypus import (
     Paragraph, Image, SimpleDocTemplate, Spacer,Table,TableStyle
 )
@@ -7,11 +6,10 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.pdfgen.canvas import Color
 
-# Hoja de estilos (no usada para texto aquí, pero estándar).
-hojaEstilo = getSampleStyleSheet()
+hojaEstilo = getSampleStyleSheet() # Hoja de estilos (no usada para texto aquí, pero estándar).
 
-# Lista de elementos para el PDF.
-elementosDoc = []
+elementosDoc = [] # Lista de elementos para el PDF.
+
 
 # Matriz de datos.
 # Las celdas vacías "" a menudo se usan donde se planea hacer un 'merge' (fusión),
@@ -53,5 +51,5 @@ tabla.setStyle(estilo)
 elementosDoc.append(tabla)
 
 # Generamos el documento "ejemploTablasCombinadas.pdf".
-documento = SimpleDocTemplate("ejemploTablasCombinadas.pdf", pagesize=A4)
+documento = SimpleDocTemplate("ejemplo_TablasCombinada.pdf", pagesize=A4)
 documento.build(elementosDoc)
