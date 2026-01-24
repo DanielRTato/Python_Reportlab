@@ -1,31 +1,20 @@
 import os
-
-# Importamos clases necesarias para las leyendas de los gráficos.
 from reportlab.graphics.charts.legends import LineLegend, Legend
-# Importamos Drawing, que es el contenedor base para gráficos vectoriales en ReportLab.
 from reportlab.graphics.shapes import Drawing
-# Importamos elementos de Platypus para el diseño del documento PDF.
 from reportlab.platypus import Paragraph, Image, SimpleDocTemplate, Spacer, Table, TableStyle
-# Importamos hoja de estilos predefinida.
 from reportlab.lib.styles import getSampleStyleSheet
-# Importamos tamaños de página estándar (A4).
 from reportlab.lib.pagesizes import A4
-# Importamos definiciones de colores.
 from reportlab.lib import colors
-# Importamos tipos de gráficos específicos.
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.charts.linecharts import HorizontalLineChart
 from reportlab.graphics.widgets.markers import makeMarker
 from reportlab.graphics.charts.piecharts import Pie, Pie3d
 
-# Obtenemos la hoja de estilos.
-hojaEstilo = getSampleStyleSheet()
+hojaEstilo = getSampleStyleSheet() # Obtenemos la hoja de estilos.
 
-# Obtenemos el estilo de cuerpo de texto (aunque no se usa mucho aquí).
-estiloCuerpoTexto = hojaEstilo["BodyText"]
+estiloCuerpoTexto = hojaEstilo["BodyText"] # Obtenemos el estilo de cuerpo de texto (aunque no se usa mucho aquí).
 
-# Lista para los elementos "flowables" del documento.
-elementosDoc = []
+elementosDoc = [] # Lista para los elementos "flowables" del documento.
 
 # Datos de temperaturas: [Meses, Temperaturas Máximas, Temperaturas Mínimas].
 temperaturas = [
@@ -37,42 +26,42 @@ temperaturas = [
 ## --- GRÁFICO DE BARRAS VERTICALES ---
 
 # Definimos un área de dibujo de 400x200 puntos.
-dibujo = Drawing(400,200)
+dibujo = Drawing(450,200)
 
 # Creamos el objeto gráfico de barras verticales.
-gb = VerticalBarChart()
+grafico_barras = VerticalBarChart() #HorizontalBarChart()
 
 # Posición del gráfico dentro del área de dibujo (Drawing).
-gb.x = 50
-gb.y = 50
+grafico_barras.x = 50
+grafico_barras.y = 50
 # Dimensiones del gráfico (el área donde se pintan las barras).
-gb.height = 125
-gb.width = 300
+grafico_barras.height = 125
+grafico_barras.width = 300
 
 # Asignamos los datos numéricos (excluyendo la primera lista que son las etiquetas de meses).
-gb.data = temperaturas[1:]
+grafico_barras.data = temperaturas[1:]
 
 # Color del borde de las barras.
-gb.strokeColor = colors.black
+grafico_barras.strokeColor = colors.black
 
 # Configuración del eje de valores (Y).
-gb.valueAxis.valueMin = -5  # Valor mínimo
-gb.valueAxis.valueMax = 40  # Valor máximo
-gb.valueAxis.valueStep = 5  # Paso entre marcas
+grafico_barras.valueAxis.valueMin = -5  # Valor mínimo
+grafico_barras.valueAxis.valueMax = 40  # Valor máximo
+grafico_barras.valueAxis.valueStep = 5  # Paso entre marcas
 
 # Configuración del eje de categorías (X).
-gb.categoryAxis.labels.boxAnchor = 'ne' # Anclaje de las etiquetas (ne = north east)
-gb.categoryAxis.labels.dx = 8           # Desplazamiento horizontal de etiquetas
-gb.categoryAxis.labels.dy = -15         # Desplazamiento vertical de etiquetas
-gb.categoryAxis.labels.angle = 30       # Rotación de etiquetas en grados
-gb.categoryAxis.categoryNames = temperaturas[0] # Asignamos los nombres de los meses
+grafico_barras.categoryAxis.labels.boxAnchor = 'ne' # Anclaje de las etiquetas (ne = north east)
+grafico_barras.categoryAxis.labels.dx = 8           # Desplazamiento horizontal de etiquetas
+grafico_barras.categoryAxis.labels.dy = -15         # Desplazamiento vertical de etiquetas
+grafico_barras.categoryAxis.labels.angle = 30       # Rotación de etiquetas en grados
+grafico_barras.categoryAxis.categoryNames = temperaturas[0] # Asignamos los nombres de los meses
 
 # Espaciado entre grupos de barras y entre barras individuales.
-gb.groupSpacing = 10
-gb.barSpacing = 2
+grafico_barras.groupSpacing = 10
+grafico_barras.barSpacing = 2
 
 # Añadimos el gráfico al dibujo.
-dibujo.add(gb)
+dibujo.add(grafico_barras)
 
 # Añadimos el dibujo al documento PDF.
 elementosDoc.append(dibujo)
@@ -205,5 +194,5 @@ dibujo.add(leyenda)
 elementosDoc.append(dibujo)
 
 # Construimos el PDF final.
-documento = SimpleDocTemplate("ejemploGraficas1.pdf", pagesize = A4)
+documento = SimpleDocTemplate("ejemplo_Graficas1.pdf", pagesize = A4)
 documento.build(elementosDoc)

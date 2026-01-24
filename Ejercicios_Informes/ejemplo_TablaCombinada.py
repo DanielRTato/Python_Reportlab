@@ -51,5 +51,5 @@ tabla.setStyle(estilo)
 elementosDoc.append(tabla)
 
 # Generamos el documento "ejemploTablasCombinadas.pdf".
-documento = SimpleDocTemplate("ejemplo_TablasCombinada.pdf", pagesize=A4)
+documento = SimpleDocTemplate("ejemplo_TablaCombinada.pdf", pagesize=A4)
 documento.build(elementosDoc)
