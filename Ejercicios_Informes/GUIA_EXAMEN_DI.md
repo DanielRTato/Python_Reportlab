@@ -49,6 +49,55 @@ elementos.append(Spacer(1, 20)) # Espacio vertical de 20pt
 
 Las tablas se usan para datos y para **maquetar** (alinear cosas).
 
+### Sistema de Coordenadas (Celdas)
+Para aplicar estilos, ReportLab usa el sistema `(columna, fila)`. **¡Ojo! Empieza en 0.**
+
+| Columna 0 | Columna 1 | Columna 2 |
+| :--- | :--- | :--- |
+| (0, 0) | (1, 0) | (2, 0) | <- Fila 0
+| (0, 1) | (1, 1) | (2, 1) | <- Fila 1
+| (0, 2) | (1, 2) | (2, 2) | <- Fila 2
+| (0, -1) | (1, -1) | (-1, -1) | <- -1 es "el último"
+
+**Ejemplos de selección:**
+```python
+# Una sola celda (la (1,1) es columna 2, fila 2):
+('BACKGROUND', (1, 1), (1, 1), colors.red)
+
+# Una fila entera (fila 0):
+('BACKGROUND', (0, 0), (-1, 0), colors.blue)
+
+# Una columna entera (columna 0):
+('BACKGROUND', (0, 0), (0, -1), colors.yellow)
+
+# Toda la tabla:
+('GRID', (0, 0), (-1, -1), 1, colors.black)
+```
+
+### Comandos de Estilo Comunes
+Aquí tienes los más usados y sus valores:
+
+*   **Alineación Horizontal (`ALIGN`):** `'LEFT'`, `'CENTER'`, `'RIGHT'`.
+*   **Alineación Vertical (`VALIGN`):** `'TOP'`, `'MIDDLE'`, `'BOTTOM'`.
+*   **Fuentes (`FONTNAME` y `FONTSIZE`):** `'Helvetica'`, `'Helvetica-Bold'`, etc.
+*   **Bordes:**
+    *   `'GRID'`: Rejilla completa (interior y exterior).
+    *   `'BOX'` o `'OUTLINE'`: Solo el borde exterior.
+    *   `'INNERGRID'`: Solo las líneas de dentro.
+    *   `'LINEBELOW'`, `'LINEABOVE'`, `'LINEBEFORE'`, `'LINEAFTER'`: Líneas individuales.
+
+```python
+estilo_avanzado = [
+    ('ALIGN', (0,0), (-1,-1), 'CENTER'),        # Todo centrado horizontalmente
+    ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),       # Todo centrado verticalmente
+    ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'), # Cabecera en negrita
+    ('FONTSIZE', (0,0), (-1,-1), 10),           # Tamaño de letra general
+    ('BOTTOMPADDING', (0,0), (-1,-1), 5),       # Margen inferior de celda
+    ('TOPPADDING', (0,0), (-1,-1), 5),          # Margen superior de celda
+    ('LINEBELOW', (0,0), (-1,0), 2, colors.black), # Línea gorda bajo cabecera
+]
+```
+
 ### Creación y Estilo Básico
 ```python
 datos = [

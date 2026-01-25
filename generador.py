@@ -606,7 +606,6 @@ from reportlab.lib.units import inch"""
                 except ValueError:
                     print("[ERROR] Error: El índice debe ser un número entero. Se omite el resalte.")
 
-            # ✅ MEJORA CRÍTICA 3: Personalización de colores en pastel
             colores_sectores = ""
             usar_colores = input("\n¿Personalizar colores de sectores? (s/n): ").lower().strip()
 
