@@ -31,7 +31,7 @@ def obter_clientes_mais_facturacion(path, limite = 10):
 
 def pdf():
     guion = []
-    datos = obter_clientes_mais_facturacion("bdTendaOrdeadoresBig.bd",5)
+    datos = obter_clientes_mais_facturacion("bdTendaOrdeadoresBig.bd", 5)
 
     fila0 = ['Pos.', 'Cliente', 'Nº Facturas', 'Facturacion total']
     tabla = [fila0]

@@ -31,7 +31,7 @@ def obter_clientes_mais_facturacion(path, limite = 10):
 
 
 def crearPDF(limite = 5):
-    datos = obter_clientes_mais_facturacion("bdTendaOrdeadoresBig.bd",limite)
+    datos = obter_clientes_mais_facturacion("bdTendaOrdeadoresBig.bd", limite)
     print(datos)
 
     nombres = []
