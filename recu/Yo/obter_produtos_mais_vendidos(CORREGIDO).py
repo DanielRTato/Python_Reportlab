@@ -9,7 +9,7 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 
 
 
-def obter_productos_mais_vendidos(self, limite = 5):
+def obter_productos_mais_vendidos(limite = 5):
     conn = sqlite3.connect("bdTendaOrdeadoresBig.bd")
     cursor = conn.cursor()
 
@@ -112,11 +112,12 @@ def crearPDF(limite = 5):
 
     gion = []
     gion.append(p_titulo)
-    gion.append(Spacer(0,20))
+    gion.append(Spacer(0,30))
     gion.append(p_subtabla)
     gion.append(tab)
     gion.append(Spacer(0,40))
     gion.append(p_subtitulo)
+    gion.append(Spacer(0,10))
     gion.append(d3)
     gion.append(Spacer(0,40))
     gion.append(p_informe)
