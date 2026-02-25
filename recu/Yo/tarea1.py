@@ -1,4 +1,3 @@
-from examen.obter_produtos_mais_vendidos import obter_productos_mais_vendidos
 from reportlab.graphics.charts.legends import LineLegend, Legend
 from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import Paragraph, Image, SimpleDocTemplate, Spacer, Table, TableStyle
