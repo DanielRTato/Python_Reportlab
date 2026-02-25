@@ -99,14 +99,14 @@ def crearPDF(limite = 5):
 
     texto = ("O producto más vendito e %s con %i unidades. No total, os %i productos más vendidos representa %i unidades vendidas e unha fcturación de %0.2f €." % (datos[0][0], datos[0][1], len(datos), sum(precios), sum([dato[2] for dato in datos])))
 
-    estiloTitulo = hojaEstilo["Title"]
-    estiloSubtitulo = hojaEstilo["Heading2"]
-    estiloboddy = hojaEstilo["BodyText"]
+    # estiloTitulo = hojaEstilo["Title"]
+    # estiloSubtitulo = hojaEstilo["Heading2"]
+    # estiloboddy = hojaEstilo["BodyText"]
 
-    p_titulo = Paragraph("El título del informe", estiloTitulo)
-    p_subtitulo = Paragraph("Esto es el subtítulo del Gráfico de barras", estiloSubtitulo)
-    p_subtabla = Paragraph("Esto es el subtítulo de la tabla", estiloSubtitulo)
-    p_informe = Paragraph(texto, estiloboddy)
+    p_titulo = Paragraph("El título del informe", hojaEstilo["Title"])
+    p_subtitulo = Paragraph("Esto es el subtítulo del Gráfico de barras", hojaEstilo["Heading2"])
+    p_subtabla = Paragraph("Esto es el subtítulo de la tabla", hojaEstilo["Heading2"])
+    p_informe = Paragraph(texto, hojaEstilo["BodyText"])
 
 
 
